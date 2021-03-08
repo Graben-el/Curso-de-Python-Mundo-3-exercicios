@@ -1,0 +1,24 @@
+# Make a script with a Tuple that has the full name of a number between 0 and 20. The script must read the user's number input and show its name. 
+# If the input is a number outside of this range, the script must not accept it.
+
+
+num = ('zero', 'um', 'dois', 'três', 'quatro', 'cinco',
+       'seis', 'sete', 'oito', 'nove', 'dez',
+       'onze', 'doze', 'treze', 'quatorze', 'quinze',
+       'dezesseis', 'dezessete', 'dezoito', 'dezenove', 'vinte')
+
+q = 'S'
+n = 0
+while q in 'Ss':
+    n = int(input('Digite um número entre 0 e 20:').strip())
+    if n > 20:
+        print('\033[1;31mNúmero inválido, tente novamente...\033[m\n')
+    else:
+        print(f'Você digitou o número {num[n]}\n')
+    q = str(input('Deseja digitar outro número? [s/n]').strip().upper())
+    if q not in 'NnSs':
+        while q not in 'NnSs':
+            q = str(input('Opção inválida. Deseja ver outro número? [s/n]\n').strip().upper())
+            if q in 'NnSs':
+                break
+print('Encerrando programa...')
