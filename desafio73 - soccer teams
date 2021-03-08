@@ -1,0 +1,21 @@
+# Make Tuple with the name of the 20 teams of the Brazilian Championship in the rank order. Then print:
+# 1) the name of the first five teams in the rank
+# 2) the name of the last four teams in the rank
+# 3) a list with the teams name in alphabetic order
+# 4) Corinthians' position in the rank
+
+
+times = ('Flamengo', 'Internacional', 'Atletico-MG', 'Sao Paulo', 'Fluminense', 'Gremio', 'Palmeiras', 'Santos',
+         'Atletico-PR', 'Bragantino', 'Ceara SC', 'Corinthians', 'Atletico-GO', 'Bahia', 'Sport Recife', 'Fortaleza',
+         'Vasco', 'Goias', 'Coritiba', 'Botafogo')
+
+print(20*'=+')
+print(f'Lista de times do BRASILEIRÃO 2020: \n{times}')
+print(20*'=+')
+print(f'Os 5 primeiros colocados são: \n{times[0:5]}')
+print(20*'=+')
+print(f'Os 4 últimos colocados são: \n{times[16:]}')
+print(20*'=+')
+print(f'Lista em ordem alfabética: \n{sorted(times)}')
+print(20*'=+')
+print(f'O Corinthians está na {times.index("Corinthians")+1}ª posição')
