@@ -1,0 +1,19 @@
+# Desenvolva um programa que leia quatro valroes pelo teclado e guarde-os em uma tupla. Dps mostre
+# 1) quantas vezes apareceu o valor 9
+# 2) Em que posição foi digitado o primeiro valor 3 (senao tiver digitado o numero 3 é pra aparecer “o numero 3 nao foi digitado”
+# 3) Quais foram os numeros pares
+
+num= (int(input('Digite o primeiro número:').strip()), int(input('Digite o segundo número:').strip()), \
+     int(input('Digite o terceiro número:').strip()), int(input('Digite o quarto número:').strip()))
+
+print(f'\nVocê digitou os números {num}')
+
+print(f'\nO número 9 foi digitado {num.count(9)} vezes')
+if num.count(3) == 0:
+    print(f'O número 3 não foi digitado...')
+else:
+    print(f'O número 3 foi o {num.index(3)+1}° número digitado')
+print('Os números pares digitados foram', end=' ')
+for c in num:
+    if c % 2 == 0:
+        print(c, end=' ')
