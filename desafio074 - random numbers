@@ -1,0 +1,8 @@
+# Create a script that generates five random numbers within a TUple. Then, show the generated numbers, the highest and lowest number
+
+import random
+
+num = (random.sample(range(0, 15), 5))
+print(f'Os números gerados foram {num}')
+print(f'O maior número sorteado foi {max(num)}')
+print(f'O menor número sorteado foi {min(num)}')
