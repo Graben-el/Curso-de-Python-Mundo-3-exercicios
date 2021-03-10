@@ -1,0 +1,14 @@
+# Crie um programa que tenha uma tupla unica com nomes de produtos e seus preços em sequencia. No final mostre os
+# preços em tabela
+
+prod = ('Caneta', '1,20', 'Borracha', '0,70', 'Caderno (200fol)', '19,90', 'Pipoca', '3,70', 'Água mineral 1L', '4,60')
+item = 0
+preco = 1
+print('+='*20)
+print(f'{"LISTA DE PRODUTOS":^40}')
+print('+='*20)
+while preco < 10:
+    print(f'{prod[item]:.<30}R$ {prod[preco]:>2}')
+    item += 2
+    preco += 2
+print('+='*20)
