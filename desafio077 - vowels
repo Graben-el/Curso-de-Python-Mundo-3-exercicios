@@ -1,0 +1,11 @@
+# Crie um progrma que tenha uma tupla com varias palavras (nao usar acentos). Depois disso, mostre para cada palavra
+# quais sao as suas vogais.
+
+t = ('carro', 'sofa', 'paralelepipedo', 'controle', 'computador', 'garrafa', 'celular')
+
+for c in t:
+    print(f'\nNa palavra {c.upper()} temos:', end=' ')
+    for l in c:
+        if l.lower() in 'aeiou':
+            print(l, end=' ')
+            
