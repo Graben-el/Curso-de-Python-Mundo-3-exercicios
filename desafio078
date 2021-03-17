@@ -1,0 +1,27 @@
+# Faça um programa que leia cinco valores numéricos e guarde-os numa lista. No final, mostre qual foi o valor
+# digitado , qual é maior e menor e as suas respectivas posições na lista.
+
+num = list()
+maior = menor = 0
+for c in range(0, 5):
+    num.append(int(input('Digite um número: ').strip()))
+    if c == 0:
+        maior = menor = num[c]
+    else:
+        if num[c] > maior:
+            maior = num[c]
+        if num[c] < menor:
+            menor = num[c]
+print('=+'*15)
+print(f'Os numeros digitados foram {num}')
+print(f'O maior valor é {maior} na posição:', end='')
+for p, v in enumerate(num):
+    if v == maior:
+        print(f'{p}...', end='')
+
+print(f'\nO menor valor é {menor} na posição:', end='')
+for p, v in enumerate(num):
+    if v == menor:
+        print(f'{p}...', end='')
+print('\n')
+print('=+'*15)
