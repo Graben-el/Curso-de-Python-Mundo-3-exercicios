@@ -1,0 +1,29 @@
+#  Crie um programa que vai ler vários números e colocar em uma lista. Depois disse mostre:
+# 1) quantos números foram digitados,
+# 2) A lista de valores ordenada de forma decrescente,
+# 3) Se o valor 5 foi digitado ou não  na lista
+
+num = list()
+while True:
+    n = int(input('\nDigite um número: ').strip())
+    num.append(n)
+    q = str(input('Deseja inserir outro número? [s/n] ').strip())
+    if q in 'Nn':
+        print('\n')
+        break
+    if q not in 'SsNn':
+        while q not in 'SsNn':
+            q = str(input('Opção inválida. Deseja continuar? [s/n] ').strip())
+        if q in 'Nn':
+            print('\n')
+            break
+num.sort(reverse=True)
+print('+='*15)
+print(f'Foram digitados {len(num)} números...')
+print(f'Os números digitados foram {num}...')
+if 5 in num:
+    print('O número 5 ESTÁ nesta lista')
+else:
+    print('O número 5 NÃO está nesta lista...')
+print('+='*15)
+
