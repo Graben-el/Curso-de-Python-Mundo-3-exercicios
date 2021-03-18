@@ -1,0 +1,33 @@
+# Crie um programa que vai ler vários números e colocar em uma lista. depois disso, crie duas listas extras que vão
+# conter apenas os valores pares e os valores ímpares digitados, respectivamente. Ao final, mostre o conteúdo das
+# três listas geradas. (Fazer um loop só pra criar a lista, e dps outro pra gerar as listas par e impar
+
+#  listas vazias para adicionar variáveis
+nums = list()
+par = list()
+impar = list()
+
+#  loop infinito para inserir números na lista geral
+while True:
+    print('=+'*15)
+    n = int(input('Digite um número: ').strip())  # leitura de input do usuário
+    nums.append(n)  # inserindo input na lista
+    q = str(input('Deseja inserir ou número? [s/n] ').strip())  # check para encerrar o loop
+    if q not in 'NnSs':  # verificação do input para encerrar o loop
+        while q not in 'NnSs':  # loop para inputs inválidos
+            q = str(input('Opção inválida. Deseja inserir outro número? [s/n] ').strip())
+    if q in 'Nn':  # condição para encerrar o loop
+        print('\n')
+        print('*-'*15)
+        print(f'Os números digitados foram {nums}')  # mostra lista nums
+        break  # encerra loop
+
+for v in nums:  # loop para listar os valores da lista nums
+    if v % 2 == 0:  # condicional para checar se os valores listados são pares
+        par.append(v)  # comando para adicionar os valores pares a lista par
+    else:  # condicional para checar se os valores listados são impares
+        impar.append(v)  # comando para adicionar os valores impares alista impar
+
+print(f'Os valores PARES inseridos foram {par}')  # mostrar lista par
+print(f'Os valores ÍMPARES inseridos foram {impar}')  # mostrar lista impar
+print('*-'*15)
