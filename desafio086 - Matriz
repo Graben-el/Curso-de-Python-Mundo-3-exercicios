@@ -1,0 +1,31 @@
+"""Crie um programa que crie uma matriz de dimensão 3x3 e preencha com valores lidos pelo teclado. No final mostre a
+matriz com a formatação correta. (linhas de 0 a 2 e coluna de 0 a 2)"""
+
+#MINHA SOLUÇÃO
+'''num = list()
+print('\033[1;33m+=\033[m'*12)
+for c in range(1, 10):
+    n = int(input(f'{c:>6}° \033[1;31mnúmero\033[m: ').strip())
+    num.append(n)
+
+print('\033[1;33m+=\033[m'*12)
+for l, v in enumerate(num):
+    if l == 2 or l == 5 or l == 8:
+        print(f'  \033[1;34m[\033[m {v} \033[1;34m]\033[m', end='\n')
+    else:
+        print(f'  \033[1;34m[\033[m {v} \033[1;34m]\033[m', end='')
+print('\033[1;33m+=\033[m'*12)'''
+#----------------------=------------=--------------------------------
+
+#SOLUÇÂO
+num = list([[0, 0, 0], [0, 0, 0], [0, 0, 0]])  # lista com 0s pra n precisar dar append
+
+for l in range(0, 3):  # loop para preencher "as linhas" (cada l é uma sublista)
+    for c in range(0, 3):  # loop para preencher "as colunas"  (c é um número na sublista)
+        num[l][c] = int(input(f'Digite o valor para [{l}, {c}]:'))
+
+print('+='*15)
+for l in range(0, 3):  # cada l abre a vez de uma lista pra ser organizada. Ex: l == 0, imprime a primeira sublista
+    for c in range(0, 3):  # cada c imprime um número da sublistaex: c == 1, imprime l[c]
+        print(f'[{num[l][c]:^5}]', end='')  # imprime cada numero, da linha da matriz, colocando um do lado do outro
+    print()  # quando terminar de preencher a linha da matriz ele dá uma quebra de texto
