@@ -1,0 +1,53 @@
+""" Faça um programa que leia nome e peso de várias pessoas (w/ verify), guardando tudo em uma lista. No final mostre
+1) quantas pessoas foram cadastradas,
+2) Uma listagem com as pessoas mais pesadas
+3) uma listagem com as pessoas mais leves."""
+
+# 1 - Listas para armazenar os dados
+dados = list()
+cad = list()
+
+# 2- contador?
+#  usar len() ao inves do contador
+
+# 3 - Loop para armazenar os dados na lista
+while True:
+    dados.append(str(input('Nome: ').strip()))
+    dados.append(float(input('Peso: ').strip()))
+    cad.append(dados[:])  # coloca o que foi cadastrado no laço como sublista em cad()
+    dados.clear()
+    #  verify
+    q = str(input('Deseja cadastrar mais dados? [s/n] ').strip())
+    if q not in 'SsNn':
+        while q not in 'SsNn':
+            q = str(input('Opção inválida...\nDeseja cadastrar mais dados? [s/n] ').strip())
+    if q in "nN":
+        break
+# 4 - Loop para descobrir o maior e menor peso e adicionar nomes na lista
+mpes = mlev = 0
+pessoasPesadas = list()  # recebe os NOMES das pessoas mais pesadas
+pessoasLeves = list()  # recebe os NOMES das pessoas mais leves
+for l, p in enumerate(cad):  # l é o numero do laço, p o indice da sublista
+    if l == 0:
+        mpes = mlev = p[1]
+        pessoasLeves.append(p[0])
+        pessoasPesadas.append(p[0])
+    else:
+        if p[1] > mpes:
+            mpes = p[1]
+            pessoasPesadas.clear()
+            pessoasPesadas.append(p[0])
+        elif p[1] == mpes:
+            pessoasPesadas.append(p[0])
+        elif p[1] < mlev:
+            mlev = p[1]
+            pessoasLeves.clear()
+            pessoasLeves.append(p[0])
+        elif p[1] == mlev:
+            pessoasLeves.append(p[0])
+
+print(
+    f'Foram cadastrados {len(cad)} pessoas...\n'
+    f'O maior peso foi {mpes}Kg, peso de {pessoasPesadas}...\n'
+    f'O menor peso foi {mlev}Kg, peso de {pessoasLeves}...'
+)
