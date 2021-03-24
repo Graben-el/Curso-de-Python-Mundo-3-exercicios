@@ -1,0 +1,16 @@
+"""Crie um programa onde o usuário possa digitar sete valores numéricos e cadastre em uma única lista que mantenha
+separados os valores pares e ímpares. No final, mostre os valores pares e ímpares em ordem crescente."""
+
+num = list([[], []])
+
+print('\033[1;33m=+\033[m'*25)
+for c in range(1, 8):
+    n = int(input(f'{c:>18}° número: ').strip())
+    if n % 2 == 0:
+        num[0].append(n)
+    else:
+        num[1].append(n)
+print('\033[1;31m=+\033[m'*25)
+print(f'Os números pares adicionados foram {sorted(num[0])}')
+print(f'Os números impares adicionados foram {sorted(num[1])}')
+print('\033[1;33m=+\033[m'*25)
