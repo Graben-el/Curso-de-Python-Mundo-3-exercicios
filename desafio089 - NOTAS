@@ -1,0 +1,42 @@
+""" Crie um programa que leia nome e duas notas de vários alunos e guarde tudo em uma lista composta. No final,
+mostre um boletim contendo a média de cada um e permita que o usuário possa mostrar as notas de cada aluno
+individualmente. (guardar todos em uma lista, com listas com o nome e uma sublista para as duas notas) """
+alunos = list()
+nomes = list()
+notas = list()
+
+# 1 - Loop para cadastrar vários alunos, pedindo nome e duas notas:
+while True:
+    nome = str(input('Nome do Aluno: ').strip())
+    nomes.append(nome)
+# 2 - Loop para input de duas notas e adicionar na lista de notas:
+    for c in range(1, 3):
+        nota = float(input(f'{c}ª nota: ').strip())
+        notas.append(nota)
+# 3 - fazer cópia da lista de notas para lista dados e limpar lista notas:
+    nomes.append(notas[:])
+    alunos.append(nomes[:])
+    nomes.clear()
+    notas.clear()
+# 4 - Query pra continuar cadastramento e fim do Loop Infinito:
+    q = str(input('Cadastrar mais alunos? [s/n] ').strip())
+    if q not in 'SsNn':
+        while q not in 'SsNn':
+            q = str(input('Opção Inválida...\nCadastrar mais alunos? [s/n] ').strip())
+    if q in 'Nn':
+        print()
+        break
+# 5 - Mostrar médias dos alunos em tabela:
+print('-'*27)
+print(f'{"N°":<4}{"NOME":<8}{"MÉDIA":>10}')
+print('-'*27)
+for c, a in enumerate(alunos):
+    print(f'{c:<4}{a[0]:<8}{((a[1][0]+a[1][1])/2):>8.1f}')
+print('='*27)
+# 6 - Loop p/ Mostrar as duas notas de cada aluno:
+while True:
+    a = int(input('Mostrar notas de qual aluno? [999 interrompe] ').strip())
+    if a == 999:
+        break
+    else:
+        print(f'As notas de {(alunos[a][0]).upper()} são {alunos[a][1]}')
