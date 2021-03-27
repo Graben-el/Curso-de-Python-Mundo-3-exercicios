@@ -1,0 +1,40 @@
+'''Crie um programa onde quatro jogadores joguem um dado e tenham resultados aleatórios. Guarde todos os resultados em
+um dicionário. No final, coloque esse dicionário em ordem, sabendo que o vencedor tirou o maior número no dado. (
+sem input, só mostra os resultados e o ranking, com sleep)'''
+from time import sleep
+from random import randint
+
+# DETALHE: biblioteca para organizar itens da lista
+from operator import itemgetter
+ranking = dict()  # pra por o dic em ordem pela biblioteca operator
+
+# 1 - criar dicionario e adicionar keys de jogadores com values de randint:
+jogadores = dict()
+for c in range(1, 5):
+    jogadores[f'Jogador {c}'] = randint(1, 12)
+
+# 2 - Mostrar resultados obtidos por cada jogador:
+print('+='*15)
+print(f'          {"RESULTADOS":>7}')
+print('+='*15)
+for k, v in jogadores.items():
+    print(f' O {k} tirou {v:>2} no d12')
+    sleep(1)
+
+# 3 - Ordenar os jogadores por resultado:
+sleep(0.5)
+print('+='*15)
+print('          RANKING')
+print('+='*15)
+sleep(0.5)
+# usando biblioteca importada:
+ranking = sorted(jogadores.items(), key=itemgetter(1), reverse=True)  # 0 pega keys, 1 pega values
+    # da usar enumerate pq ranking virou lista
+for i, v in enumerate(ranking):
+    print(f'{i+1}° lugar: {v[0]} com {v[1]}.')
+    sleep(0.7)
+print('+='*15)
+
+# método alternativo pra ordem do dict: nao precisa do dict ranking
+'''for w in sorted(d, key=d.get, reverse=True):
+    print(w, d[w])'''
