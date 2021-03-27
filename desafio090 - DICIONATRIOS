@@ -1,0 +1,15 @@
+''' faça um programa que leia nome e média de um aluno, guardando também a situação em um dicionário. No final,
+mostre o conteúdo da estrutura na tela. '''
+
+alunos = dict()
+alunos['nome'] = str(input('Nome do Aluno: ').strip())
+alunos['media'] = float(input(f'Média de {alunos["nome"]}: ').strip())
+if alunos['media'] >= 7:
+    alunos['situação'] = '\033[1;34mAprovado...\033[m'
+elif 5 < alunos['media'] <7:
+    alunos['situação'] = '\033[1;33mRecuperação...\033[m'
+else:
+    alunos['media'] = '\033[1;31mReprovado...\033[m'
+print('+='*15)
+for k, v in alunos.items():
+    print(f'- {k} é igual a {v}')
