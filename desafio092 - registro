@@ -1,0 +1,21 @@
+"""Crie um programa que leia nome, ano de nascimento e carteira de trabalho e cadastre-as (com idade) em um
+dicionário, se por acaso a CTPS for diferente de zero, o dicionário recebera também o ano da contratação e o salário.
+Calcule e acrescente. além da idade, com quantos anos a pessoa vai se aposentar (considerar 35 anos de colaboração). """
+
+from datetime import date
+# 1 - Criar dicionário e inputs das informações:
+dados = dict()
+
+dados['nome'] = str(input('Nome: ').strip())
+dados['ano'] = int(input('Ano de Nascimento: ').strip())
+dados['idade'] = date.today().year - dados['ano']
+dados['ctps'] = int(input('N° Carteira de Trabalho [0 = não tem]: ').strip())
+# 2 - Condicional para parar o programa se nao tiver CTPS:
+if dados['ctps'] > 0:
+    dados['contrato'] = int(input('Ano de Contratação: ').strip())
+    dados['salario'] = float(input('Salário: ').strip())
+    dados['aposentadoria'] = (dados['contrato'] + 35 - date.today().year) + dados['idade']
+# 3 - Mostrar informações:
+print('+='*15)
+for k, v in dados.items():
+    print(f'- {k} tem valor {v}')
