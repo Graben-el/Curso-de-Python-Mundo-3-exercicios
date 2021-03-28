@@ -1,0 +1,27 @@
+"""Crie um programa que gerencie o aproveitamento de um jogador de futebol. O programa vai ler o nome do jogador e
+quantas partidas ele jogou. Depois vai ler a quantidade de gols, feitos em cada partida. No Final, tudo será guardado
+em um dicionário, incluindo o total de gols feitos durante o campeonato. (nome e aproveitamento no dicionario,
+o aproveitamento vai ser uma lista com os gols por jogo, depois guarda tudo no dicionario com o total tbm) """
+
+# 1 - criar lista e adicionar dados do jogador:
+jogador = dict()
+jogador['nome'] = str(input('Nome do Jogador: ').strip())
+nPartidas = int(input('N° de partidas: ').strip())
+# 2 - Criar lista para numero de gols/partida
+golsPartida = list()  # lista p/ por gol/partida
+for c in range(0, nPartidas):  # loop para adicionar gols a lista golsPartida
+    golsPartida.append(int(input(f'    N° de gols {c+1}° partida: ').strip()))
+# 3 - Add a lista golsPartida a key 'gols' e a soma da lista a key 'totGols'
+jogador['gols'] = golsPartida[:]
+jogador['totGols'] = sum(golsPartida)
+# 4 - Mostrar informações:
+print('+='*30)
+print(jogador)
+print('+='*30)
+for k, v in jogador.items():
+    print(f'O campo {k} tem o valor {v}')
+print('+='*30)
+print(f'O jogador {jogador["nome"]} jogou {len(jogador["gols"])} partidas.')
+for i, v in enumerate(jogador['gols']):  # acessa a lista dentro de gols
+    print(f'    => Na partida {i+1}, marcou {v} gols')
+print(f'Foi um total de {jogador["totGols"]} gols...')
