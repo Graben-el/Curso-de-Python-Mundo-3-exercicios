@@ -1,0 +1,47 @@
+'''Crie um programa que leia nome, sexo e idade de varias pessoas, guardando os dados de cada ua em um dicionario e
+todos os dicionários em uma lista. No final, mostre: A) Quantas pessoas foram cadastradas B) A média de idade do grupo
+C) Uma lista com todas as mulheres D) Uma lista com todos as pessoas com idade acima da média. '''
+
+# 1 - Criar lista e dic, loop infinito add nome, sexo e idade:
+pessoas = list()
+cad = dict()
+soma = 0
+while True:
+    # 1.1 - loop pra add info no dic
+    cad.clear()
+    cad['nome'] = str(input('Nome: ').strip())
+    # 1.1.2 - add sexo e validacao do input
+    while True:
+        cad['sexo'] = str(input('Sexo [M/F]: ').strip().upper())
+        if cad['sexo'] in 'MmFf':
+            break
+        print('ERRO! Digite M ou F')
+    cad['idade'] = int(input('Idade: ').strip())
+    soma += cad['idade']
+    # 1.2 - adicionar cópia do dicionario do loop pra lista
+    pessoas.append(cad.copy())
+    # 1.3 - verify para cadastrar mais:
+    q = str(input('Quer continuar? [s/n]' ).strip())
+    if q not in 'SsNn':
+        while q not in 'SsNn':
+            q = str(input('Opção inválida...\n'
+                          'Quer continuar? [s/n] ').strip())
+    if q in 'Nn':
+        break
+
+# 2 - mostrar dados
+print('+='*20)
+print(f' - Foram cadastradas {len(pessoas)} pessoas...')  # parte A
+media = soma/len(pessoas)
+print(f' - A média de idade do grupo é {media:5.1f}') # parte B
+# 2.1 - mostrar nome de mulheres pelo loop:
+print(f' - As mulheres do grupo são ', end='') # parte C
+for p in pessoas:
+    if p['sexo'] == 'F':
+        print(f'"{p["nome"]}" ', end='')
+print()
+print(' - Lista de pessoas acima da média:')
+for p in pessoas:
+    if p['idade'] > media:
+        print(f'    {p}')
+print('+='*20)
