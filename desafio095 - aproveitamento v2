@@ -1,0 +1,55 @@
+"""Aprimore o desafio 93 para que ele funcione para varios jogadores, incluindo um sistema de visualização de
+detalhes de aproveitamento de cada jogador (colocar numero de jogador q n existe dá ERRO, 999 encerra o programa) """
+
+# 0 - lista para por os dicionarios dos jogadores
+listaJogadores = list()
+# 1 - declarar dicionario vazio, criar um loop para adicionar informações:
+jogador = dict()
+while True:
+    jogador.clear() # esvazia o dicionario jogador em cada loop
+    jogador['nome'] = str(input('Nome do Jogador: ').strip())
+    nPartidas = int(input('N° de partidas: ').strip())
+    # 1.1 - Criar lista para numero de gols/partida
+    golsPartida = list()  # lista p/ por gol/partida
+    for c in range(0, nPartidas):  # loop para adicionar gols a lista golsPartida
+        golsPartida.append(int(input(f'    N° de gols {c+1}° partida: ').strip()))
+    # 1.2 - Add a lista golsPartida a key 'gols' e a soma da lista a key 'totGols'
+    jogador['gols'] = golsPartida[:]
+    jogador['totGols'] = sum(golsPartida)
+    # 1.3 - add dicionario jogador a lista geral:
+    listaJogadores.append(jogador.copy())
+
+    # 1.4 - verify de continue:
+    q = str(input('Quer add outro jogador? [S/N] ').strip())
+    if q not in 'SsNn':
+        while q not in 'SsNn':
+            q = str(input('Opção inválida...\n'
+                          'Add outro jogador? [s/n] ').strip())
+    if q in 'Nn':
+        break
+
+# 4 - Mostrar informações:
+print('+='*30)
+print('cod', end='')
+for i in jogador.keys():
+    print(f' {i:<15}', end='')
+print()
+print('-'*50)
+for i, j in enumerate(listaJogadores):
+    print(f' {i:>3} ', end='')
+    for d in j.values():
+        print(f' {str(d):<15}', end='')
+    print()
+print('+='*30)
+while True:
+    busca = int(input('Mostrar dados de qual jogador? [999 para parar] ').strip())
+    if busca == 999:
+        break
+    if busca > len(listaJogadores):
+        print('Erro, nao existe jogador com este cod, tente novamente...')
+    else:
+        print(f'--- LEVANTAMENTO DO JOGADOR {listaJogadores[busca]["nome"].upper()}: ')
+        for c, g in enumerate(listaJogadores[busca]['gols']):
+            print(f'    No jogo {c+1} fez {g} gols...')
+    print('-'*50)
+print('>>>VOLTE SEMPRE<<<')
