@@ -1,0 +1,14 @@
+"""Faça um programa que tenha função chamada escreve(), que receba um texto qualquer como parâmetros e mostre uma
+mensagem com o tamanho adaptável (as linhas separadoras do mesmo tamanho do texto) """
+
+
+def escreve(x):
+    size = len(x) + 4
+    print('~' * size)
+    print(f'  {x}')
+    print('~' * size)
+
+
+escreve("CURSO EM VÍDEO")
+escreve('ACABA GEOLOGIA!')
+escreve('CONSTITUCIONALICIMAMENTE')
