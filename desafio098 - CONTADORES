@@ -1,0 +1,43 @@
+"""Faça um programa que tenha função chamada contador(), que receba três parâmetros: inicio, fim e passo e realize a
+contagem. Seu programa tem que realizar três contagens da função criada: a)de 1 a 10, de 1 em 1 número, b) de 10 a 0,
+de 2 em 2, e c) uma contagem personalizada (tem q funcionar para 1) início maior, fim menor e voltando,
+2) valor passo é negativo (vai voltar), 3) se o passo for 0, o programa considera como 1) """
+
+from time import sleep
+
+
+def contador(i, f, p):
+    if p < 0:
+        p = abs(p)
+    if p == 0:
+        p = 1
+
+    print('*-' * 20)
+    print(f'Contador de {i} a {f} de {p} em {p}')
+
+    if f > i:
+        sleep(1.5)
+        cont = i
+        while cont <= f:
+            print(f'{cont}', end=' ', flush=True)
+            sleep(0.5)
+            cont += p
+        print('FIM')
+    else:
+        sleep(2)
+        cont = i
+        while cont >= f:
+            print(f'{cont}', end=' ', flush=True)
+            sleep(0.5)
+            cont -= p
+        print('FIM')
+
+
+contador(1, 10, 1)
+contador(10, 0, 2)
+print('*-'*20)
+print('Sua vez de personalizar a contagem: ')
+ini = int(input('Inicio: ').strip())
+fim = int(input('Fim: ').strip())
+pas = (int(input('Passo: ').strip()))
+contador(ini, fim, pas)
