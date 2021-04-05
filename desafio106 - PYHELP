@@ -1,0 +1,36 @@
+"""Faça um mini-sistema que utilize o interactive help do python. O usuário vai digitar o comando e o manual vai
+aparecer. Quando o usuário digitar a palavra “FIM”, o programa se encerrará. OBS: use cores """
+
+
+def linha(cor='\033[m', txt=''):
+    print(f'\033[m{cor}~' * (len(txt) + 4))
+    print(f'  {txt}')
+    print(f'~' * (len(txt) + 4))
+    print('\033[m', end='')
+
+
+def pyhelp():
+    from time import sleep
+    cor = {'v': '\033[1;42m',
+           'a': '\033[1;44m',
+           'ver': '\033[1;41m',
+           'wb': '\033[7;40m',
+           'zero': '\033[m'}
+    while True:
+        linha(cor['v'], 'SISTEMA DE AJUDA PYHELP')
+        fun = input('FUNÇÃO OU BIBLIOTECA [FIM p/ encerrar]: ')
+        if fun.upper() == 'FIM':
+            linha(cor['ver'], 'ATÉ LOGO')
+            break
+        else:
+            sleep(1)
+            linha(cor['a'], f'ACESSANDO MANUAL DO COMANDO "{fun.upper()}"')
+            sleep(0.7)
+            print(cor['wb'])
+            help(fun)
+            print(cor['zero'], end='')
+            sleep(1)
+
+
+# Programa Principal:
+pyhelp()
