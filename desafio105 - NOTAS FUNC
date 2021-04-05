@@ -1,0 +1,33 @@
+""" Faça um programa que tenha uma função notas() que pode receber várias notas de alunos e vai retornar um
+dicionário com as seguintes informações:
+1- Quantidade de Notas
+2- A maior nota
+3 - A menor nota
+4 - A média da turma
+5 - A situação (opcional) Adicione também as docstrings da função. """
+
+
+def notas(*grades, sit=False):
+    """
+    -> Realiza tratamento estatístico das notas e situação de vários alunos
+    :param grades: notas dos alunos (aceita várias)
+    :param sit: (opcional) se True, mostra situação da turma
+    :return: Dicionário com: Total de notas, Maior e Menor nota, Média da turma e Situação
+    da Turma (Opcional)
+    """
+    valores = dict()
+    valores['Total'] = len([*grades])
+    valores['Maior nota'] = max([*grades])
+    valores['Menor nota'] = min([*grades])
+    valores['Média'] = sum([*grades])/len([*grades])
+    if sit:
+        if valores['Média'] >= 7:
+            valores['Situação'] = 'BOA'
+        elif valores['Média'] >= 5:
+            valores['Situação'] = 'REGULAR'
+        else:
+            valores['Situação'] = 'RUIM'
+    return valores
+
+
+print(notas(5.5, 9.5, 10, 6.5,  sit=True))
