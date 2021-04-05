@@ -1,0 +1,27 @@
+"""Crie um programa com função chamada fatorial e recebe dois parâmetros, o primeiro é o número a ser calculado o
+fatorial e o outro chamado show, que será o valor lógico (opcional) indicando se será mostrado ou não na tela o
+processo de cálculo do fatorial """
+
+
+def fatorial(a, show=False):
+    """
+    -> Calcula o fatorial do número escolhido
+    :param a: n° para calcular o fatorial
+    :param show: True = mostrar conta do fatorial; False = não mostrar conta do fatorial,
+    :return: resultado do Fatorial do número escolhido
+    """
+    k = 1
+    print(f'{a}! = ', end='')
+    for c in range(a, 0, -1):
+        if show == True:
+            if c > 1:
+                print(f'{c} x ', end='')
+            else:
+                print(f'{c} ', end='= ')
+        k *= c
+    return k
+
+
+print(fatorial(7, True))
+print(fatorial(6, True))
+print(fatorial(5, False))
